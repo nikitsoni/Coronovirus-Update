@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID-19 Update</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="C:\Users\Nikit Soni\Desktop\Code\Corona update\corona-update.css">
+</head>
+<body>
+
+	<h1 style="font-size: 40px; color: red; ">COVID-19 UPDATE</h1>
+
+	<input type="text" name="country-name" id="country-name" placeholder="Type country name">
+	<input type="submit" name="country-name" onclick="myFunc()">
+
+	<div class="global-container">
+		<h1>Global Report on Corona Virus</h1>
+		<h2>Confirmed Cases:<p id="confirmed-cases"></p></h2>
+		<h2>Recovered Cases:<p id="recovered-cases"></p></h2>
+		<h2>Deaths:<p id="deaths"></p></h2>
+		<h2>Last Updated:<p id="update"></p></h2>
+
+	</div>
+
+	<div class="contry-container">
+		<h1 id="country"></h1>
+		<h2><p id="country-confirmed-cases"></p></h2>
+		<h2><p id="country-recovered-cases"></p></h2>
+		<h2><p id="country-deaths"></p></h2>
+		<h2><p id="country-update"></p></h2>
+	</div>
+	
+
+	<script type="text/javascript">
+
+	fetch('https://covid19.mathdro.id/api')
+	.then(res  => res.json())
+	.then(data => {
+		document.getElementById('confirmed-cases').innerHTML = data.confirmed.value;
+	 	document.getElementById('recovered-cases').innerHTML = data.recovered.value;
+	 	document.getElementById('deaths').innerHTML = data.deaths.value;
+	 	document.getElementById('update').innerHTML = data.lastUpdate;
+	})
+
+	function myFunc() {
+
+	var ans = document.getElementById('country-name').value;
+
+	var countryName = ans.toUpperCase()
+
+	document.getElementById("country").innerHTML = countryName;
+	
+
+	fetch(`https://covid19.mathdro.id/api/countries/${ans}`)
+	.then(res  => res.json())
+	.then(data => {
+		document.getElementById('country-confirmed-cases').innerHTML = "Confirmed Cases: " + data.confirmed.value;
+	 	document.getElementById('country-recovered-cases').innerHTML ="Recovered Cases: "+ data.recovered.value;
+	 	document.getElementById('country-deaths').innerHTML = "Deaths: " + data.deaths.value;
+	 	document.getElementById('country-update').innerHTML = "Last Updated: " + data.lastUpdate;
+	})
+
+	};
+
+
+
+	</script>
+
+
+</body>
