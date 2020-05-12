@@ -2,27 +2,59 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	font-family: 'Assistant', sans-serif;
 }
 body{
 	text-align: center;
+	/*background-color:#F9DDA4;*/
 }
 h1, h2, p {
 	font-family: roboto;
 }
 
+h1#page-title{
+	margin-top:10px;
+	font-size: 40px; color: red; 
+	font-family: 'Assistant', sans-serif;
+}
+
 .global-container{
-	margin: 10px;
+	margin: 50px;
 	padding: 10px;
-	background: red;
 	border-radius: 5px;
 }
+.global-container h1{font-family: 'Assistant', sans-serif; padding-bottom:40px;}
+.global-container h2{font-family: 'Assistant', sans-serif;}
+
 .contry-container{
 	margin: 10px;
 	padding: 10px;
 	background: white;
 }
+.country-container h1{font-family: 'Assistant', sans-serif; padding-bottom:40px;}
+.country-container h2{font-family: 'Assistant', sans-serif;}
+
+
+.topic{
+	display:grid;
+	grid-template-columns: repeat(4,1fr);
+	padding:15px;
+}
+.topic h2{font-family: 'Assistant', sans-serif;}
+
+h2{ border-right: 3px solid red; }
+
+.subject{
+	display:grid;
+	grid-template-columns: repeat(4,1fr);
+	font-size:25px;
+}
+.subject p{font-family: 'Assistant', sans-serif;}
+
+#country{font-family: 'Assistant', sans-serif; padding-bottom:20px;}
+
 input[type="text"]{
-	width: 80%;
+	width: 40%;
 	max-width: 100%;
 	margin: 10px 30px;
 	padding: 10px;
