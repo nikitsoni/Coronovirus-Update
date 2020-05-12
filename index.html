@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>COVID-19 Update</title>
+	<title>COVID-19 Update | Tracker</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="corona-favicon.png" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="corona-update.css">
+	<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-	<h1 style="font-size: 40px; color: red; ">COVID-19 UPDATE</h1>
-
-	<input type="text" name="country-name" id="country-name" placeholder="Type country name">
-	<input type="submit" name="country-name" onclick="myFunc()">
+	<h1 id='page-title'>COVID-19 UPDATE</h1>
 
 	<div class="global-container">
 		<h1>Global Report on Corona Virus</h1>
-		<h2>Confirmed Cases:<p id="confirmed-cases"></p></h2>
-		<h2>Recovered Cases:<p id="recovered-cases"></p></h2>
-		<h2>Deaths:<p id="deaths"></p></h2>
-		<h2>Last Updated:<p id="update"></p></h2>
-
+		<div class='topic'>
+			<div><h2>Confirmed Cases</h2></div>
+			<div><h2>Recovered Cases</h2></div>
+			<div><h2>Deaths</h2></div>
+			<div><h2>Last Updated</h2></div>
+		</div>
+		<div class='subject'>
+			<p id="confirmed-cases"></p>
+			<p id="recovered-cases"></p>
+			<p id="deaths"></p>
+			<p id="update"></p>
+		</div>
 	</div>
+	
+	<input type="text" name="country-name" id="country-name" placeholder="Type country name">
+	<input type="submit" name="country-name" onclick="myFunc()">
 
 	<div class="contry-container">
 		<h1 id="country"></h1>
-		<h2><p id="country-confirmed-cases"></p></h2>
-		<h2><p id="country-recovered-cases"></p></h2>
-		<h2><p id="country-deaths"></p></h2>
-		<h2><p id="country-update"></p></h2>
+		<div class='topic'>
+			<div><h2 id="country-confirmed-cases-name"></h2></div>
+			<div><h2 id="country-recovered-cases-name"></h2></div>
+			<div><h2 id="country-deaths-name"></h2></div>
+			<div><h2 id="country-update-name"></h2></div>
+		</div>
+		<div class='subject'>
+			<p id="country-confirmed-cases"></p>
+			<p id="country-recovered-cases"></p>
+			<p id="country-deaths"></p>
+			<p id="country-update"></p>
+		</div>
 	</div>
 	
 
@@ -53,10 +70,14 @@
 	fetch(`https://covid19.mathdro.id/api/countries/${ans}`)
 	.then(res  => res.json())
 	.then(data => {
-		document.getElementById('country-confirmed-cases').innerHTML = "Confirmed Cases: " + data.confirmed.value;
-	 	document.getElementById('country-recovered-cases').innerHTML ="Recovered Cases: "+ data.recovered.value;
-	 	document.getElementById('country-deaths').innerHTML = "Deaths: " + data.deaths.value;
-	 	document.getElementById('country-update').innerHTML = "Last Updated: " + data.lastUpdate;
+		document.getElementById('country-confirmed-cases-name').innerHTML = 'Confirmed Cases';
+		document.getElementById('country-recovered-cases-name').innerHTML = 'Recovered Cases';
+		document.getElementById('country-deaths-name').innerHTML = 'Deaths';
+		document.getElementById('country-update-name').innerHTML = 'Last Updated';
+		document.getElementById('country-confirmed-cases').innerHTML = data.confirmed.value;
+	 	document.getElementById('country-recovered-cases').innerHTML = data.recovered.value;
+	 	document.getElementById('country-deaths').innerHTML = data.deaths.value;
+	 	document.getElementById('country-update').innerHTML = data.lastUpdate;
 	})
 
 	};
@@ -67,3 +88,4 @@
 
 
 </body>
+</html>
